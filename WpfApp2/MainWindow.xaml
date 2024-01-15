@@ -7,6 +7,113 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid x:Name="opis" Visibility="Collapsed">
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="{Binding Nazwa}" FontSize="10" Margin="5"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Content="{Binding Data}"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="{Binding Priorytet}"/>
+                            <Label Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="{Binding Opis}"/>
+
+        </Grid>
+        <Grid x:Name="StronaGlowna">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Margin="10" Content="Dodaj swoje Zadanie" FontSize="20" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"></Label>
+            <Label Margin="5" Content="Data wykonania zadania : " Grid.Column="0" Grid.Row="1"></Label>
+            <DatePicker x:Name="Data" Margin="5" Grid.Row="1" Grid.Column="1"/>
+            <Label Margin="5" Content="Nazwa zadania : " Grid.Row="2" Grid.Column="0"/>
+            <TextBox Margin="5" x:Name="Nazwa" Grid.Row="2" Grid.Column="1"/>
+            <Label Margin="5" Content="Opis zadanie : " Grid.Row="3" Grid.Column="0"/>
+            <TextBox Margin="5" x:Name="Opis" Grid.Row="3" Grid.Column="1"/>
+            <Label Margin="5" Content="Priorytet" Grid.Row="4" Grid.Column="0"/>
+            <ComboBox Margin="5" x:Name="Priorytet" Grid.Row="4" Grid.Column="1">
+                <ComboBoxItem Content="niski"/>
+                <ComboBoxItem Content="wysoki"/>
+                <ComboBoxItem Content="najwyzszy"/>
+            </ComboBox>
+            <Button Click="DodajZadanie" Content="DODAJ" Margin="10" Grid.Row="5" Grid.Column="1" Height="30" Width="150"/>
+
+
+            <Frame Grid.ColumnSpan="2" Grid.RowSpan="9" Margin="0" BorderBrush="Black" BorderThickness="1">
+                <Frame.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                </Frame.Effect>
+
+
+            </Frame>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Margin="10" Content="Twoje zadania :" FontSize="20" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"></Label>
+            <ItemsControl x:Name="Lista" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="10" Margin="10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="{Binding Nazwa}" FontSize="10" Margin="5"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Content="{Binding Data}"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="{Binding Priorytet}"/>
+                            <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="Zobacz szczegoly" Click="WyswietlOpis" Margin="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Frame Grid.ColumnSpan="2" Grid.RowSpan="9" Margin="0" BorderBrush="Black" BorderThickness="1">
+                <Frame.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                </Frame.Effect>
+
+
+            </Frame>
+        </Grid>
+    </Grid>
 
     </Grid>
 </Window>
